@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="display">
+                <input type="text" id="display" placeholder="0" readonly>
+            </div>
+            
+            <div class="history">
+                <p id="history-text"></p>
+            </div>
+
+            <div class="buttons">
+                <!-- Row 1: Clear and Operations -->
+                <button class="btn clear" onclick="clearDisplay()">C</button>
+                <button class="btn operator" onclick="appendOperator('/')">&divide;</button>
+                <button class="btn operator" onclick="appendOperator('*')">&times;</button>
+                <button class="btn delete" onclick="deleteLast()">DEL</button>
+
+                <!-- Row 2: 7, 8, 9 -->
+                <button class="btn number" onclick="appendNumber('7')">7</button>
+                <button class="btn number" onclick="appendNumber('8')">8</button>
+                <button class="btn number" onclick="appendNumber('9')">9</button>
+                <button class="btn operator" onclick="appendOperator('-')">-</button>
+
+                <!-- Row 3: 4, 5, 6 -->
+                <button class="btn number" onclick="appendNumber('4')">4</button>
+                <button class="btn number" onclick="appendNumber('5')">5</button>
+                <button class="btn number" onclick="appendNumber('6')">6</button>
+                <button class="btn operator" onclick="appendOperator('+')">+</button>
+
+                <!-- Row 4: 1, 2, 3 -->
+                <button class="btn number" onclick="appendNumber('1')">1</button>
+                <button class="btn number" onclick="appendNumber('2')">2</button>
+                <button class="btn number" onclick="appendNumber('3')">3</button>
+                <button class="btn operator" onclick="appendOperator('%')">%</button>
+
+                <!-- Row 5: 0, Decimal, Equals -->
+                <button class="btn number zero" onclick="appendNumber('0')">0</button>
+                <button class="btn number" onclick="appendNumber('.')">.</button>
+                <button class="btn equals" onclick="calculate()">=</button>
+
+                <!-- Row 6: Problem Solver -->
+                <button class="btn problem-btn" onclick="openProblemSolver()">Problem Solver</button>
+            </div>
+        </div>
+
+        <!-- Problem Solver Modal -->
+        <div id="problemModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeProblemSolver()">&times;</span>
+                <h2>Problem Solver</h2>
+                
+                <div class="problem-section">
+                    <h3>Quadratic Equation: ax² + bx + c = 0</h3>
+                    <label>a: <input type="number" id="a" placeholder="Enter a"></label>
+                    <label>b: <input type="number" id="b" placeholder="Enter b"></label>
+                    <label>c: <input type="number" id="c" placeholder="Enter c"></label>
+                    <button class="btn solve-btn" onclick="solveQuadratic()">Solve</button>
+                    <div id="quadratic-result"></div>
+                </div>
+
+                <div class="problem-section">
+                    <h3>Percentage Calculator</h3>
+                    <label>Value: <input type="number" id="percent-value" placeholder="Enter value"></label>
+                    <label>Percentage: <input type="number" id="percent-num" placeholder="Enter percentage"></label>
+                    <button class="btn solve-btn" onclick="calculatePercentage()">Calculate</button>
+                    <div id="percentage-result"></div>
+                </div>
+
+                <div class="problem-section">
+                    <h3>Simple Interest</h3>
+                    <label>Principal: <input type="number" id="principal" placeholder="Enter principal"></label>
+                    <label>Rate (%): <input type="number" id="rate" placeholder="Enter rate"></label>
+                    <label>Time (years): <input type="number" id="time" placeholder="Enter time"></label>
+                    <button class="btn solve-btn" onclick="calculateSimpleInterest()">Calculate</button>
+                    <div id="interest-result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
